@@ -1,0 +1,101 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  margin:0 0 2rem 0;
+  background: #F1F0EB;;
+}
+
+header h1{
+  font-size: 1.5rem;
+}
+
+.logo-search{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.search-bar{
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  gap: 10px;
+  width: 18rem;
+  height: 2.5rem;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  align-items: start;
+  gap: 15px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: black;
+  font-size: 1.2rem;
+}
+.property-listing{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+  gap: 20px;
+
+}
+.property {
+  margin: 10px;
+  padding: 10px;
+  position: relative;
+}
+
+.property .title{
+  text-transform: capitalize;
+}
+
+.property .price{
+  position: absolute;
+  top: 30px;
+  left: 20px;
+  background-color: black;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.property .location{
+  font-size: 1.2rem; 
+
+}
+
+.property img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px;
+}
+
+.property h2 {
+  margin-top: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.property p {
+  margin-bottom: 5px;
+}
