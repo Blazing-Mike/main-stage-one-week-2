@@ -21,7 +21,7 @@ This project is a simple property listing webpage that fetches property data fro
 1. Clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/Blazing-Mike/main-stage-one-week-2.git
+   git clone git@github.com:Blazing-Mike/main-stage-one-week-2.git
    ```
 
 2. Open `index.html` in your web browser to view the property listing page.
