@@ -14,7 +14,7 @@ header{
 }
 
 header h1{
-  font-size: 1.5rem;
+  font-size: 1.4rem;
 }
 
 .logo-search{
@@ -24,7 +24,7 @@ header h1{
 }
 
 .search-bar{
-  display: flex;
+  display: none;
   align-items: center;
   padding: 5px;
   gap: 10px;
@@ -35,27 +35,42 @@ header h1{
   border: none;
 }
 
+nav ul {
+  list-style: none;
+  display: none;
+
+}
+
+@media screen and (min-width: 768px){
+.search-bar{
+  display: flex;
+}
+
+nav ul {
+  display: flex;
+  align-items: start;
+  gap: 15px;
+}
+
+}
+
 body {
   font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
 }
 
-nav ul {
-  list-style: none;
-  display: flex;
-  align-items: start;
-  gap: 15px;
-}
+
 
 nav ul li a {
   text-decoration: none;
   color: black;
   font-size: 1.2rem;
+  text-transform: lowercase;
 }
 .property-listing{
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 20px;
 
 }
@@ -98,4 +113,14 @@ nav ul li a {
 
 .property p {
   margin-bottom: 5px;
+}
+
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  color: red;
+  font-size: 1.2rem;
+  margin: 10px 0;
 }

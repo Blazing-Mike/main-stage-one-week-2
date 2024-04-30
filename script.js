@@ -8,6 +8,7 @@ const options = {
   },
 };
 const propertyListings = document.getElementById("propertiesList");
+const main = document.querySelector("main");
 
 fetch(API_URL, options)
   .then((response) => {
@@ -23,7 +24,7 @@ fetch(API_URL, options)
   })
   .catch((error) => {
     console.error("FETCH ERROR:", error);
-    displayError("NETWORK RESPONSE ERROR");
+    displayError("An error occurred fetching the data.");
   });
 
 function displayProperties(properties) {
@@ -37,7 +38,7 @@ function displayProperties(properties) {
     location.className = "location";
 
     const title = document.createElement("h2");
-    let formattedTitle = property.title.split('||')[0].trim();
+    let formattedTitle = property.title.split("||")[0].trim();
     title.textContent = formattedTitle;
     title.className = "title";
 
@@ -61,5 +62,5 @@ function displayError(message) {
   const errorElement = document.createElement("div");
   errorElement.className = "error";
   errorElement.textContent = message;
-  propertyListings.appendChild(errorElement);
+  main.appendChild(errorElement);
 }
