@@ -9,6 +9,7 @@ const options = {
 };
 const propertyListings = document.getElementById("propertiesList");
 const main = document.querySelector("main");
+const loader = document.querySelector(".loader");
 
 fetch(API_URL, options)
   .then((response) => {
@@ -20,6 +21,7 @@ fetch(API_URL, options)
   })
   .then((data) => {
     console.log(data);
+    removeLoader();
     displayProperties(data?.hits);
   })
   .catch((error) => {
@@ -27,14 +29,24 @@ fetch(API_URL, options)
     displayError("An error occurred fetching the data.");
   });
 
+  function removeLoader() {
+    loader.style.display = "none";
+  }
+
 function displayProperties(properties) {
+  propertyListings.style.display = "grid";
   properties.forEach((property) => {
+
+    const propertyLink = document.createElement("a");
+    propertyLink.href = `property-details.html?id=${property.externalID}`;
+    propertyLink.className = "property-link";
+    
     const propertyElement = document.createElement("div");
     propertyElement.className = "property";
 
     const location = document.createElement("p");
     location.textContent =
-      property.location[0].name + ", " + property.location[1].name;
+      property.location[0].name + " " + property.location[1].name + ", " + property.location[2].name;
     location.className = "location";
 
     const title = document.createElement("h2");

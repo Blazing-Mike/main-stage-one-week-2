@@ -15,6 +15,7 @@ header{
 
 header h1{
   font-size: 1.4rem;
+
 }
 
 .logo-search{
@@ -38,7 +39,6 @@ header h1{
 nav ul {
   list-style: none;
   display: none;
-
 }
 
 @media screen and (min-width: 768px){
@@ -68,10 +68,23 @@ nav ul li a {
   font-size: 1.2rem;
   text-transform: lowercase;
 }
+
+nav ul li a:hover{
+  color: #FFA500;
+  transition: 5ms;
+
+}
+main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .property-listing{
-  display: grid;
+  width: 100%;
+  display: none;
+  padding: 20px;
+  gap: 10px;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 20px;
 
 }
 .property {
@@ -101,8 +114,15 @@ nav ul li a {
 
 .property img {
   max-width: 100%;
-  height: auto;
+  min-width: 20rem;
+  height: 20rem;
   border-radius: 15px;
+}
+
+@media screen and (min-width: 768px){
+  .property img {
+    min-width: 25rem;
+  }
 }
 
 .property h2 {
@@ -124,3 +144,31 @@ nav ul li a {
   font-size: 1.2rem;
   margin: 10px 0;
 }
+
+.loader-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #000;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  margin: auto;
+  }
+
+  @keyframes rotation {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+  } 
