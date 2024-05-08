@@ -1,6 +1,6 @@
 const API_URL =
   "https://bayut.p.rapidapi.com/properties/list?locationExternalIDs=5002%2C6020&purpose=for-rent&hitsPerPage=25&page=0&lang=en&sort=city-level-score&rentFrequency=monthly&categoryExternalID=4";
-const options = {
+export const options = {
   method: "GET",
   headers: {
     "X-RapidAPI-Key": "169fe60703mshe88b7af446e7bd9p130d2cjsnabbed6375b91",
@@ -20,7 +20,6 @@ fetch(API_URL, options)
     }
   })
   .then((data) => {
-    console.log(data);
     removeLoader();
     displayProperties(data?.hits);
   })
@@ -29,24 +28,27 @@ fetch(API_URL, options)
     displayError("An error occurred fetching the data.");
   });
 
-  function removeLoader() {
-    loader.style.display = "none";
-  }
+export function removeLoader() {
+  loader.style.display = "none";
+}
 
 function displayProperties(properties) {
   propertyListings.style.display = "grid";
   properties.forEach((property) => {
-
     const propertyLink = document.createElement("a");
     propertyLink.href = `property-details.html?id=${property.externalID}`;
     propertyLink.className = "property-link";
-    
+
     const propertyElement = document.createElement("div");
     propertyElement.className = "property";
 
     const location = document.createElement("p");
     location.textContent =
-      property.location[0].name + " " + property.location[1].name + ", " + property.location[2].name;
+      property.location[0].name +
+      " " +
+      property.location[1].name +
+      ", " +
+      property.location[2].name;
     location.className = "location";
 
     const title = document.createElement("h2");
@@ -62,15 +64,18 @@ function displayProperties(properties) {
     propertyImage.src = property.coverPhoto.url;
     propertyImage.className = "property-image";
 
+    propertyLink.appendChild(propertyElement);
+
     propertyElement.appendChild(propertyImage);
     propertyElement.appendChild(title);
     propertyElement.appendChild(price);
     propertyElement.appendChild(location);
-    propertyListings.appendChild(propertyElement);
+
+    propertyListings.appendChild(propertyLink);
   });
 }
 
-function displayError(message) {
+export function displayError(message) {
   const errorElement = document.createElement("div");
   errorElement.className = "error";
   errorElement.textContent = message;
