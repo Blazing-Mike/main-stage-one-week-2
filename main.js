@@ -1,3 +1,5 @@
+import { formatPrice } from "./utils.js";
+
 const API_URL =
   "https://bayut.p.rapidapi.com/properties/list?locationExternalIDs=5002%2C6020&purpose=for-rent&hitsPerPage=25&page=0&lang=en&sort=city-level-score&rentFrequency=monthly&categoryExternalID=4";
 export const options = {
@@ -10,6 +12,7 @@ export const options = {
 const propertyListings = document.getElementById("propertiesList");
 const main = document.querySelector("main");
 const loader = document.querySelector(".loader");
+const loaderContainer = document.querySelector(".loader-container");
 
 fetch(API_URL, options)
   .then((response) => {
@@ -25,11 +28,13 @@ fetch(API_URL, options)
   })
   .catch((error) => {
     console.error("FETCH ERROR:", error);
+    removeLoader();
     displayError("An error occurred fetching the data.");
   });
 
 export function removeLoader() {
   loader.style.display = "none";
+  loaderContainer.style.display = "none";
 }
 
 function displayProperties(properties) {
@@ -56,8 +61,10 @@ function displayProperties(properties) {
     title.textContent = formattedTitle;
     title.className = "title";
 
+    const formattedPrice = formatPrice(property.price);
+
     const price = document.createElement("p");
-    price.textContent = "$" + property.price;
+    price.textContent = "$" + formattedPrice;
     price.className = "price";
 
     const propertyImage = document.createElement("img");
